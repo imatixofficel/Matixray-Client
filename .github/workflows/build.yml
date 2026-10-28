@@ -11,6 +11,10 @@ on:
         description: "Message users see when the update is offered"
         required: false
         type: string
+      aether_ref:
+        description: "Optional: exact Aether commit or tag to build (default: the version current when this project was made)"
+        required: false
+        type: string
   push:
     branches:
       - main
@@ -20,8 +24,11 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
+      # The native cores are taken as they were when this project snapshot was made, so a newer
+      # upstream change cannot break the build. Change the date, or pass aether_ref, to move on.
+      CORE_SNAPSHOT_DATE: "2026-10-04 03:00:00 +0000"
       RUST_TOOLCHAIN: "1.99.0"
       GO_VERSION: "1.26"
 
@@ -33,11 +40,25 @@ jobs:
 
     # The native cores are built from their own sources, fetched next to the app.
     - name: Fetch native core sources
+      env:
+        AETHER_REF: ${{ inputs.aether_ref }}
       run: |
-        rm -rf AndroidLibXrayLite hev-socks5-tunnel aether
-        git clone --recursive https://github.com/patterniha/AndroidLibXrayLite AndroidLibXrayLite
-        git clone --recursive https://github.com/heiher/hev-socks5-tunnel hev-socks5-tunnel
-        git clone --recursive https://github.com/patterniha/Aether.git aether
+        fetch_core () {
+          url="$1"; dir="$2"; ref="${3:-}"
+          rm -rf "$dir"
+          git clone "$url" "$dir"
+          if [ -n "$ref" ]; then
+            git -C "$dir" checkout "$ref"
+          else
+            rev=$(git -C "$dir" rev-list -1 --before="$CORE_SNAPSHOT_DATE" HEAD)
+            [ -n "$rev" ] && git -C "$dir" checkout "$rev"
+          fi
+          git -C "$dir" submodule update --init --recursive
+          echo "$dir is at $(git -C "$dir" rev-parse HEAD)"
+        }
+        fetch_core https://github.com/patterniha/AndroidLibXrayLite AndroidLibXrayLite
+        fetch_core https://github.com/heiher/hev-socks5-tunnel hev-socks5-tunnel
+        fetch_core https://github.com/patterniha/Aether.git aether "$AETHER_REF"
         echo "HEV_REV=$(git -C hev-socks5-tunnel rev-parse HEAD)" >> $GITHUB_ENV
         echo "AETHER_REV=$(git -C aether rev-parse HEAD)" >> $GITHUB_ENV
 
@@ -278,7 +299,7 @@ jobs:
 
   release:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.event_name == 'workflow_dispatch' && inputs.release_tag != ''
 
     steps:
