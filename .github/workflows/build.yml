@@ -226,6 +226,23 @@ jobs:
           echo "SIGN_KEY_PASS=matixray" >> $GITHUB_ENV
         fi
 
+    # The wrapper jar is skipped by some upload tools (jar files are often ignored), so it is restored
+    # here from the Gradle version named in gradle-wrapper.properties when it is missing.
+    - name: Make sure the Gradle wrapper is present
+      run: |
+        cd ${{ github.workspace }}/V2rayNG
+        if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+          version=$(sed -n 's/.*gradle-\([0-9][0-9.]*\)-.*\.zip.*/\1/p' gradle/wrapper/gradle-wrapper.properties | head -1)
+          echo "Restoring the Gradle wrapper for Gradle $version"
+          curl -fsSL "https://services.gradle.org/distributions/gradle-${version}-bin.zip" -o "$RUNNER_TEMP/gradle.zip"
+          unzip -q "$RUNNER_TEMP/gradle.zip" -d "$RUNNER_TEMP/gradle-dist"
+          mkdir -p "$RUNNER_TEMP/wrapper-gen"
+          (cd "$RUNNER_TEMP/wrapper-gen" && "$RUNNER_TEMP"/gradle-dist/gradle-*/bin/gradle wrapper --gradle-version "$version" --no-daemon)
+          mkdir -p gradle/wrapper
+          cp "$RUNNER_TEMP/wrapper-gen/gradle/wrapper/gradle-wrapper.jar" gradle/wrapper/gradle-wrapper.jar
+        fi
+        ls -l gradle/wrapper
+
     # Unit tests are reported but do not stop the APK from being built.
     - name: Unit tests
       continue-on-error: true
