@@ -1,19 +1,31 @@
 # Matixtay Client
 
+<div align="center">
+
+# ﷽
+
+### In the Name of Allah, the Most Gracious, the Most Merciful
+
 A V2Ray client for Android, supporting [Xray core](https://github.com/XTLS/Xray-core) and [v2fly core](https://github.com/v2fly/v2ray-core)
 
-In the name of the Lord
+</div>
 
 > [!NOTE]
 > **Matixtay Client** is an upgraded and redesigned version of the **v2rayNG** project. Built on the V2Ray core, it offers an improved user interface, better stability, and enhanced performance. All core features of v2rayNG are preserved, with new capabilities added on top.
 
-![Matixtay Client Icon](https://github.com/imatixofficel/Matixray-Client/blob/main/fastlane/metadata/android/en-US/images/icon.png)
+<p align="center">
+  <img src="https://github.com/imatixofficel/Matixray-Client/blob/main/fastlane/metadata/android/en-US/images/icon.png" alt="Matixtay Client Icon" width="250" height="250">
+</p>
+
+<div align="center">
 
 [![API](https://img.shields.io/badge/API-24%2B-yellow.svg?style=flat)](https://developer.android.com/about/versions/lollipop)
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-2.4.0-blue.svg)](https://kotlinlang.org)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/imatixofficel/Matixray-Client)](https://github.com/imatixofficel/Matixray-Client/commits/main)
 [![GitHub Releases](https://img.shields.io/github/downloads/imatixofficel/Matixray-Client/latest/total?logo=github)](https://github.com/imatixofficel/Matixray-Client/releases)
 [![Chat on Telegram](https://img.shields.io/badge/Chat%20on-Telegram-brightgreen.svg)](https://t.me/imatix7)
+
+</div>
 
 ---
 
@@ -40,7 +52,11 @@ In the name of the Lord
 
 Download the latest release here:
 
-[https://github.com/imatixofficel/Matixray-Client/releases](https://github.com/imatixofficel/Matixray-Client/releases)
+<div align="center">
+
+### [⬇️ Download Matixtay Client](https://github.com/imatixofficel/Matixray-Client/releases)
+
+</div>
 
 > [!TIP]
 > Matixtay Client is the mobile version. For the desktop version, please visit v2rayN:
@@ -131,9 +147,13 @@ This project is released under the **GPL-3.0** license. See the LICENSE file for
 
 ## Community
 
-Telegram Group:
+<div align="center">
+
+### Telegram Group
 
 [https://t.me/imatix7](https://t.me/imatix7)
+
+</div>
 
 ---
 
@@ -142,3 +162,13 @@ Telegram Group:
 - The [v2rayNG](https://github.com/2dust/v2rayNG) team for laying the foundation of this project
 - The [Xray-core](https://github.com/XTLS/Xray-core) and [v2fly](https://github.com/v2fly/v2ray-core) teams
 - All contributors and loyal users
+
+---
+
+<div align="center">
+
+**﷽**
+
+*May Allah bless this project and all who use it.*
+
+</div>
