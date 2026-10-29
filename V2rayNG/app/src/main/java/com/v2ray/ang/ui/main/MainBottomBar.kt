@@ -37,6 +37,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -62,7 +68,7 @@ fun MainBottomBar(
         Surface(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 40.dp),
+                .padding(top = 34.dp),
             color = MaterialTheme.colorScheme.surface,
             shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp),
             shadowElevation = 12.dp
@@ -71,8 +77,8 @@ fun MainBottomBar(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .heightIn(min = 52.dp)
-                        .padding(start = 20.dp, end = 120.dp, top = 6.dp, bottom = 4.dp),
+                        .heightIn(min = 44.dp)
+                        .padding(start = 20.dp, end = 104.dp, top = 4.dp, bottom = 2.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
@@ -140,29 +146,48 @@ private fun ConnectButton(
         }
     }
 
-    Box(modifier = modifier.size(80.dp), contentAlignment = Alignment.Center) {
+    Box(modifier = modifier.size(68.dp), contentAlignment = Alignment.Center) {
+        // soft halo behind the button
+        Box(
+            modifier = Modifier
+                .size(68.dp)
+                .background(accent.copy(alpha = 0.14f), CircleShape)
+        )
         if (isRunning) {
-            PulseRing(color = accent, modifier = Modifier.size(72.dp))
+            PulseRing(color = accent, modifier = Modifier.size(60.dp))
         }
         Box(
             modifier = Modifier
-                .size(72.dp)
+                .size(60.dp)
                 .graphicsLayer {
                     scaleX = press.value
                     scaleY = press.value
                 }
-                .shadow(elevation = 8.dp, shape = CircleShape)
+                .shadow(
+                    elevation = 14.dp,
+                    shape = CircleShape,
+                    ambientColor = accent,
+                    spotColor = accent
+                )
                 .clip(CircleShape)
-                .background(surfaceColor)
-                .border(width = 3.dp, color = accent, shape = CircleShape)
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            lerp(accent, Color.White, 0.22f),
+                            lerp(accent, Color.Black, 0.28f)
+                        )
+                    )
+                )
+                .border(width = 2.dp, color = Color.White.copy(alpha = 0.45f), shape = CircleShape)
                 .clickable {
                     scope.launch {
-                        press.animateTo(0.86f, spring(stiffness = Spring.StiffnessHigh))
+                        press.animateTo(0.88f, spring(stiffness = Spring.StiffnessHigh))
                         press.animateTo(1f, spring(dampingRatio = Spring.DampingRatioMediumBouncy))
                     }
                     if (!isRunning) {
                         scope.launch {
-                            spin.animateTo(720f, tween(durationMillis = 1200))
+                            spin.snapTo(0f)
+                            spin.animateTo(360f, tween(durationMillis = 700))
                         }
                     }
                     onAction(MainAction.ToggleService)
@@ -170,13 +195,22 @@ private fun ConnectButton(
                 .semantics { contentDescription = description },
             contentAlignment = Alignment.Center
         ) {
-            Icon(
-                painter = painterResource(R.drawable.ic_power_24dp),
-                contentDescription = null,
-                tint = accent,
-                modifier = Modifier
-                    .size(38.dp)
-                    .graphicsLayer { rotationZ = spin.value }
+            Text(
+                text = "M",
+                color = Color.White,
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold,
+                style = TextStyle(
+                    shadow = Shadow(
+                        color = Color.Black.copy(alpha = 0.30f),
+                        offset = Offset(0f, 3f),
+                        blurRadius = 6f
+                    )
+                ),
+                modifier = Modifier.graphicsLayer {
+                    rotationY = spin.value
+                    cameraDistance = 14f * density
+                }
             )
         }
     }
