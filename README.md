@@ -16,6 +16,12 @@
 
 </div>
 
+<div align="center">
+
+**🌐 Language / زبان:** [English](README.md) | [فارسی](README-fa.md)
+
+</div>
+
 > [!NOTE]
 > **Matixtay Client** is an upgraded and redesigned version of the **v2rayNG** project. Built on the V2Ray core, it offers an improved user interface, better stability, and enhanced performance. All core features of v2rayNG are preserved, with new capabilities added on top.
 
@@ -33,17 +39,40 @@
 
 ## Download
 
-<div align="center">
+<table align="center">
+<tr>
+<td align="center" width="50%">
 
 ### 📱 Android
 
-### [⬇️ Download Matixtay Client for Android](https://github.com/imatixofficel/Matixray-Client/releases)
+<img src="https://img.shields.io/badge/Platform-Android-green?style=for-the-badge&logo=android" alt="Android"/>
+
+<br><br>
+
+**[⬇️ Download for Android](https://github.com/imatixofficel/Matixray-Client/releases)**
+
+<br>
+
+Compatible with Android 7.0 (API 24) and above
+
+</td>
+<td align="center" width="50%">
 
 ### 💻 Windows (Desktop)
 
-### [⬇️ Download Matixtay Client for Windows](https://github.com/imatixofficel/Matixry-windosw)
+<img src="https://img.shields.io/badge/Platform-Windows-blue?style=for-the-badge&logo=windows" alt="Windows"/>
 
-</div>
+<br><br>
+
+**[⬇️ Download for Windows](https://github.com/imatixofficel/Matixry-windosw)**
+
+<br>
+
+Compatible with Windows 10 and above
+
+</td>
+</tr>
+</table>
 
 > [!TIP]
 > Matixtay Client is available for both **Android** and **Windows**. Choose the version that suits your device.
