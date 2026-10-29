@@ -2,6 +2,8 @@
 
 <div align="center">
 
+# ﷽
+
 ### In the Name of Allah, the Most Gracious, the Most Merciful
 
 </div>
@@ -35,20 +37,24 @@
 
 <div align="center">
 
-### [⬇️ Download Matixtay Client](https://github.com/imatixofficel/Matixray-Client/releases)
+### 📱 Android
+
+### [⬇️ Download Matixtay Client for Android](https://github.com/imatixofficel/Matixray-Client/releases)
+
+### 💻 Windows (Desktop)
+
+### [⬇️ Download Matixtay Client for Windows](https://github.com/imatixofficel/Matixry-windosw)
 
 </div>
 
 > [!TIP]
-> Matixtay Client is the mobile version. For the desktop version, please visit v2rayN:
->
-> https://github.com/2dust/v2rayN
+> Matixtay Client is available for both **Android** and **Windows**. Choose the version that suits your device.
 
 ---
 
 ## About
 
-**Matixtay Client** is a free and open-source Android client that lets you access a free and secure internet using various V2Ray protocols (VMess, VLESS, Trojan, Shadowsocks, and more).
+**Matixtay Client** is a free and open-source multi-platform client that lets you access a free and secure internet using various V2Ray protocols (VMess, VLESS, Trojan, Shadowsocks, and more).
 
 ### Key Features
 
@@ -61,6 +67,7 @@
 - ✅ Geoip and Geosite support for smart routing
 - ✅ Background execution with a stable connection
 - ✅ Compatible with Android 7.0 (API 24) and above
+- ✅ Available for both Android and Windows
 - ✅ Fully open-source and ad-free
 
 ---
@@ -69,16 +76,16 @@
 
 ### Prerequisites
 
-- Android device running version 7.0 (API 24) or higher
+- Android device running version 7.0 (API 24) or higher — or a Windows PC
 - Internet access
-- VPN permission for connection
+- VPN permission for connection (Android)
 
 ### Installation Steps
 
-1. Download the APK from the [Releases](https://github.com/imatixofficel/Matixray-Client/releases) section
-2. Enable installation from unknown sources in your Android settings
-3. Install the APK
-4. Open the app and grant VPN permission
+1. Download the appropriate version from the links above
+2. Enable installation from unknown sources (Android) or run the installer (Windows)
+3. Install the application
+4. Open the app and grant VPN permission (Android)
 5. Add your subscription link or configuration and connect
 
 ---
@@ -114,6 +121,9 @@ No, Matixtay Client does not collect or transmit any personal user data.
 
 **Does it require root?**
 No, the app works through the official Android VPN API and does not require root.
+
+**Is there a Windows version?**
+Yes! You can download the Windows desktop version from [here](https://github.com/imatixofficel/Matixry-windosw).
 
 **How do I add my own server?**
 Select "Add Configuration" from the app menu or enter your subscription link.
