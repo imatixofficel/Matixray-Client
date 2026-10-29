@@ -2,8 +2,6 @@
 
 <div align="center">
 
-# ﷽
-
 ### In the Name of Allah, the Most Gracious, the Most Merciful
 
 </div>
