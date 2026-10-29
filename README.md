@@ -2,20 +2,22 @@
 
 <div align="center">
 
-# ﷽
-
 ### In the Name of Allah, the Most Gracious, the Most Merciful
 
-A V2Ray client for Android, supporting [Xray core](https://github.com/XTLS/Xray-core) and [v2fly core](https://github.com/v2fly/v2ray-core)
+</div>
+
+<p align="center">
+  <img src="https://github.com/imatixofficel/Matixray-Client/blob/main/fastlane/metadata/android/en-US/images/icon.png" alt="Matixtay Client Icon" width="250" height="250">
+</p>
+
+<div align="center">
+
+**A V2Ray client for Android, supporting [Xray core](https://github.com/XTLS/Xray-core) and [v2fly core](https://github.com/v2fly/v2ray-core)**
 
 </div>
 
 > [!NOTE]
 > **Matixtay Client** is an upgraded and redesigned version of the **v2rayNG** project. Built on the V2Ray core, it offers an improved user interface, better stability, and enhanced performance. All core features of v2rayNG are preserved, with new capabilities added on top.
-
-<p align="center">
-  <img src="https://github.com/imatixofficel/Matixray-Client/blob/main/fastlane/metadata/android/en-US/images/icon.png" alt="Matixtay Client Icon" width="250" height="250">
-</p>
 
 <div align="center">
 
@@ -26,6 +28,21 @@ A V2Ray client for Android, supporting [Xray core](https://github.com/XTLS/Xray-
 [![Chat on Telegram](https://img.shields.io/badge/Chat%20on-Telegram-brightgreen.svg)](https://t.me/imatix7)
 
 </div>
+
+---
+
+## Download
+
+<div align="center">
+
+### [⬇️ Download Matixtay Client](https://github.com/imatixofficel/Matixray-Client/releases)
+
+</div>
+
+> [!TIP]
+> Matixtay Client is the mobile version. For the desktop version, please visit v2rayN:
+>
+> https://github.com/2dust/v2rayN
 
 ---
 
@@ -48,34 +65,6 @@ A V2Ray client for Android, supporting [Xray core](https://github.com/XTLS/Xray-
 
 ---
 
-## Download
-
-Download the latest release here:
-
-<div align="center">
-
-### [⬇️ Download Matixtay Client](https://github.com/imatixofficel/Matixray-Client/releases)
-
-</div>
-
-> [!TIP]
-> Matixtay Client is the mobile version. For the desktop version, please visit v2rayN:
->
-> https://github.com/2dust/v2rayN
-
----
-
-### Geoip and Geosite
-
-- geoip.dat and geosite.dat files are in `Android/data/com.v2ray.ang/files/assets` (path may differ on some Android device)
-- download feature will get enhanced version in this [repo](https://github.com/Loyalsoldier/v2ray-rules-dat) (note: it needs a working proxy)
-- latest official [domain list](https://github.com/Loyalsoldier/v2ray-rules-dat) and [ip list](https://github.com/Loyalsoldier/geoip) can be imported manually
-- possible to use a third-party dat file in the same folder, like [h2y](https://guide.v2fly.org/routing/sitedata.html#%E5%A4%96%E7%BD%AE%E7%9A%84%E5%9F%9F%E5%90%8D%E6%96%87%E4%BB%B6)
-
-More in our [wiki](https://github.com/imatixofficel/Matixray-Client/wiki)
-
----
-
 ## Installation & Usage
 
 ### Prerequisites
@@ -91,6 +80,17 @@ More in our [wiki](https://github.com/imatixofficel/Matixray-Client/wiki)
 3. Install the APK
 4. Open the app and grant VPN permission
 5. Add your subscription link or configuration and connect
+
+---
+
+### Geoip and Geosite
+
+- geoip.dat and geosite.dat files are in `Android/data/com.v2ray.ang/files/assets` (path may differ on some Android device)
+- download feature will get enhanced version in this [repo](https://github.com/Loyalsoldier/v2ray-rules-dat) (note: it needs a working proxy)
+- latest official [domain list](https://github.com/Loyalsoldier/v2ray-rules-dat) and [ip list](https://github.com/Loyalsoldier/geoip) can be imported manually
+- possible to use a third-party dat file in the same folder, like [h2y](https://guide.v2fly.org/routing/sitedata.html#%E5%A4%96%E7%BD%AE%E7%9A%84%E5%9F%9F%E5%90%8D%E6%96%87%E4%BB%B6)
+
+More in our [wiki](https://github.com/imatixofficel/Matixray-Client/wiki)
 
 ---
 
@@ -149,9 +149,7 @@ This project is released under the **GPL-3.0** license. See the LICENSE file for
 
 <div align="center">
 
-### Telegram Group
-
-[https://t.me/imatix7](https://t.me/imatix7)
+### [📢 Join Our Telegram Group](https://t.me/imatix7)
 
 </div>
 
