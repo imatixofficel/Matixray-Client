@@ -202,8 +202,5 @@ This project is released under the **GPL-3.0** license. See the LICENSE file for
 
 <div align="center">
 
-**﷽**
-
-*May Allah bless this project and all who use it.*
 
 </div>
