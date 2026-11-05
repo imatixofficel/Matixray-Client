@@ -151,6 +151,9 @@ object AppConfig {
     const val GITHUB_RAW_URL = "https://raw.githubusercontent.com"
     const val GITHUB_DOWNLOAD_URL = "$GITHUB_URL/%s/releases/latest/download"
     const val ANDROID_PACKAGE_NAME_LIST_URL = "$GITHUB_RAW_URL/2dust/androidpackagenamelist/master/proxy.txt"
+    const val PREF_CONNECTED_SINCE = "pref_connected_since"
+    const val PREF_IRAN_ROUTING_MODE = "pref_iran_routing_mode"
+    const val PREF_IRAN_FRAGMENT_STRENGTH = "pref_iran_fragment_strength"
     const val UPDATE_API_URL = "https://api.github.com/repos/imatixofficel/Matixray-Client/releases/latest"
     const val DELAY_TEST_URL = "https://www.gstatic.com/generate_204"
     const val DELAY_TEST_URL2 = "https://www.google.com/generate_204"
@@ -213,6 +216,7 @@ object AppConfig {
     /** Message constants for communication. */
     const val MSG_REGISTER_CLIENT = 1
     const val MSG_STATE_RUNNING = 11
+    const val MSG_TRAFFIC_STATS = 95
     const val MSG_STATE_NOT_RUNNING = 12
     const val MSG_UNREGISTER_CLIENT = 2
     const val MSG_STATE_START = 3

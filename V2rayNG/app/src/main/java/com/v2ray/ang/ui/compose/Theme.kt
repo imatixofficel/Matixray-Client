@@ -36,18 +36,18 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-private val SkyBlue = Color(0xFF1BA8E8)
-private val SkyBlueDark = Color(0xFF4CC3F5)
+private val SkyBlue = Color(0xFF7448F0) // Matixray violet
+private val SkyBlueDark = Color(0xFFB9A2FF)
 
 private val LightColor = lightColorScheme(
     primary = SkyBlue,
     onPrimary = Color(0xFFFFFFFF),
-    primaryContainer = Color(0xFFB8E3F7),
-    onPrimaryContainer = Color(0xFF00334A),
+    primaryContainer = Color(0xFFE7DEFF),
+    onPrimaryContainer = Color(0xFF26005E),
     secondary = SkyBlue,
     onSecondary = Color(0xFFFFFFFF),
-    secondaryContainer = Color(0xFFD6EFFB),
-    onSecondaryContainer = Color(0xFF00334A),
+    secondaryContainer = Color(0xFFEFE8FF),
+    onSecondaryContainer = Color(0xFF26005E),
     tertiary = Color(0xFF2E9E5B),
     onTertiary = Color(0xFFFFFFFF),
     tertiaryContainer = Color(0xFFC8F0D6),
@@ -56,35 +56,35 @@ private val LightColor = lightColorScheme(
     errorContainer = Color(0xFFFFDAD6),
     onError = Color(0xFFFFFFFF),
     onErrorContainer = Color(0xFF410002),
-    background = Color(0xFFEFEFF5),
-    onBackground = Color(0xFF111116),
+    background = Color(0xFFF5F2FB),
+    onBackground = Color(0xFF14111C),
     surface = Color(0xFFFFFFFF),
-    onSurface = Color(0xFF111116),
-    surfaceVariant = Color(0xFFE4E6EE),
-    onSurfaceVariant = Color(0xFF5B5F6B),
-    outline = Color(0xFF8A8E9A),
-    outlineVariant = Color(0xFFDADCE4),
+    onSurface = Color(0xFF14111C),
+    surfaceVariant = Color(0xFFE9E4F4),
+    onSurfaceVariant = Color(0xFF5F5A70),
+    outline = Color(0xFF8C86A0),
+    outlineVariant = Color(0xFFE0DAEE),
     inverseSurface = Color(0xFF2A2B31),
     inverseOnSurface = Color(0xFFF2F2F7),
     inversePrimary = SkyBlueDark,
     scrim = Color(0xFF000000),
     surfaceTint = SkyBlue,
     surfaceContainerLowest = Color(0xFFFFFFFF),
-    surfaceContainerLow = Color(0xFFF7F7FB),
-    surfaceContainer = Color(0xFFF1F1F6),
-    surfaceContainerHigh = Color(0xFFEBEBF1),
-    surfaceContainerHighest = Color(0xFFE4E4EB),
+    surfaceContainerLow = Color(0xFFF9F7FD),
+    surfaceContainer = Color(0xFFF3F0F9),
+    surfaceContainerHigh = Color(0xFFEDE9F5),
+    surfaceContainerHighest = Color(0xFFE6E1F0),
 )
 
 private val DarkColor = darkColorScheme(
     primary = SkyBlueDark,
-    onPrimary = Color(0xFF00324A),
-    primaryContainer = Color(0xFF0B4A66),
-    onPrimaryContainer = Color(0xFFCDEEFF),
+    onPrimary = Color(0xFF2A0A73),
+    primaryContainer = Color(0xFF4A2EA6),
+    onPrimaryContainer = Color(0xFFE9DEFF),
     secondary = SkyBlueDark,
-    onSecondary = Color(0xFF00324A),
-    secondaryContainer = Color(0xFF123C52),
-    onSecondaryContainer = Color(0xFFCDEEFF),
+    onSecondary = Color(0xFF2A0A73),
+    secondaryContainer = Color(0xFF362766),
+    onSecondaryContainer = Color(0xFFE9DEFF),
     tertiary = Color(0xFF83D6B5),
     onTertiary = Color(0xFF00382E),
     tertiaryContainer = Color(0xFF005143),
@@ -93,24 +93,24 @@ private val DarkColor = darkColorScheme(
     errorContainer = Color(0xFF93000A),
     onError = Color(0xFF690005),
     onErrorContainer = Color(0xFFFFDAD6),
-    background = Color(0xFF111116),
-    onBackground = Color(0xFFE6E6EC),
-    surface = Color(0xFF1C1C22),
-    onSurface = Color(0xFFE6E6EC),
-    surfaceVariant = Color(0xFF2C2D35),
-    onSurfaceVariant = Color(0xFFC3C5CF),
-    outline = Color(0xFF8E909B),
-    outlineVariant = Color(0xFF3A3B44),
-    inverseSurface = Color(0xFFE6E6EC),
-    inverseOnSurface = Color(0xFF1C1C22),
+    background = Color(0xFF0F0D16),
+    onBackground = Color(0xFFE8E4F0),
+    surface = Color(0xFF1A1724),
+    onSurface = Color(0xFFE8E4F0),
+    surfaceVariant = Color(0xFF2B2638),
+    onSurfaceVariant = Color(0xFFC9C3D9),
+    outline = Color(0xFF8F8AA3),
+    outlineVariant = Color(0xFF3A3450),
+    inverseSurface = Color(0xFFE8E4F0),
+    inverseOnSurface = Color(0xFF1A1724),
     inversePrimary = SkyBlue,
     scrim = Color(0xFF000000),
     surfaceTint = SkyBlueDark,
-    surfaceContainerLowest = Color(0xFF0C0C10),
-    surfaceContainerLow = Color(0xFF17171C),
-    surfaceContainer = Color(0xFF1C1C22),
-    surfaceContainerHigh = Color(0xFF26262D),
-    surfaceContainerHighest = Color(0xFF30303A),
+    surfaceContainerLowest = Color(0xFF0B0A10),
+    surfaceContainerLow = Color(0xFF151220),
+    surfaceContainer = Color(0xFF1A1724),
+    surfaceContainerHigh = Color(0xFF242032),
+    surfaceContainerHighest = Color(0xFF2E2A3E),
 )
 
 // Semantic Colors
@@ -120,15 +120,15 @@ val colorConfigType = SkyBlue
 val colorFabActive = SkyBlue
 val colorFabInactiveLight = Color(0xFF9C9CA6)
 val colorFabInactiveDark = Color(0xFF6A6A74)
-val dividerColorLight = Color(0xFFE3E4EA)
-val dividerColorDark = Color(0xFF34353D)
+val dividerColorLight = Color(0xFFE6E1F0)
+val dividerColorDark = Color(0xFF362F4B)
 
 // Toast Colors 85%
 val toastNormalBgLight = Color(0xD9353A3E)
 val toastNormalBgDark = Color(0xD94A4F54)
 val toastSuccessBg = Color(0xD9388E3C)
 val toastErrorBg = Color(0xD9D50000)
-val toastInfoBg = Color(0xD90E86C4)
+val toastInfoBg = Color(0xD95B3BC4)
 val toastIconCircleBg = Color(0x33FFFFFF)
 val toastTextColor = Color.White
 

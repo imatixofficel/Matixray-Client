@@ -10,6 +10,7 @@ import com.v2ray.ang.AppConfig
 import com.v2ray.ang.R
 import com.v2ray.ang.dto.ConnectionTestResult
 import com.v2ray.ang.dto.RealPingResult
+import com.v2ray.ang.dto.TrafficSnapshot
 import com.v2ray.ang.dto.SubscriptionUpdateResult
 import com.v2ray.ang.dto.TestServiceMessage
 import com.v2ray.ang.dto.entities.ProfileItem
@@ -58,6 +59,9 @@ class MainRepository(
                 AppConfig.MSG_STATE_CONNECTING -> MainServiceEvent.StateConnecting(safeIntent.getStringExtra("content").orEmpty())
 
                 AppConfig.MSG_STATE_STOP_SUCCESS -> MainServiceEvent.StateStopSuccess
+                AppConfig.MSG_TRAFFIC_STATS -> safeIntent
+                    .serializable<TrafficSnapshot>("content")
+                    ?.let { MainServiceEvent.Traffic(it) }
                 AppConfig.MSG_MEASURE_DELAY_RESULT -> safeIntent
                     .serializable<ConnectionTestResult>("content")
                     ?.let { MainServiceEvent.MeasureDelayResult(it, requestId) }

@@ -11,7 +11,9 @@ import androidx.core.app.NotificationCompat
 import com.v2ray.ang.AppConfig
 import com.v2ray.ang.R
 import com.v2ray.ang.core.CoreServiceManager
+import com.v2ray.ang.dto.TrafficSnapshot
 import com.v2ray.ang.dto.entities.ProfileItem
+import com.v2ray.ang.helper.MessageHelper
 import com.v2ray.ang.extension.delay
 import com.v2ray.ang.extension.toSpeedString
 import com.v2ray.ang.helper.NotificationHelper
@@ -30,7 +32,7 @@ object NotificationManager {
     private const val NOTIFICATION_PENDING_INTENT_STOP_V2RAY = 1
     private const val NOTIFICATION_PENDING_INTENT_RESTART_V2RAY = 2
     private const val NOTIFICATION_ICON_THRESHOLD = 3000
-    private const val QUERY_INTERVAL_MS = 3000L
+    private const val QUERY_INTERVAL_MS = 2000L
 
     private var lastQueryTime = 0L
     private var mBuilder: NotificationCompat.Builder? = null
@@ -63,7 +65,6 @@ object NotificationManager {
      * @param currentConfig The current profile configuration.
      */
     fun startSpeedNotification() {
-        if (MmkvManager.decodeSettingsBool(AppConfig.PREF_SPEED_ENABLED) != true) return
         if (speedNotificationJob != null || CoreServiceManager.isRunning() == false) return
 
         var lastZeroSpeed = false
@@ -289,7 +290,23 @@ object NotificationManager {
         val proxyTotal = proxyUplink + proxyDownlink
         val directTotal = directUplink + directDownlink
         val zeroSpeed = proxyTotal + directTotal == 0L
-        if (!zeroSpeed || !lastZeroSpeed) {
+
+        // The main screen shows live traffic whether or not the speed notification is enabled.
+        getService()?.let { service ->
+            MessageHelper.sendMsg2UI(
+                service,
+                AppConfig.MSG_TRAFFIC_STATS,
+                TrafficSnapshot(
+                    upSpeed = (proxyUplink / sinceLastQueryInSeconds).toLong(),
+                    downSpeed = (proxyDownlink / sinceLastQueryInSeconds).toLong(),
+                    upDelta = proxyUplink,
+                    downDelta = proxyDownlink
+                )
+            )
+        }
+
+        val speedNotificationEnabled = MmkvManager.decodeSettingsBool(AppConfig.PREF_SPEED_ENABLED) == true
+        if (speedNotificationEnabled && (!zeroSpeed || !lastZeroSpeed)) {
             val text = StringBuilder()
             appendSpeedString(
                 text, AppConfig.TAG_PROXY,

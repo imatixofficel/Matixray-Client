@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.v2ray.ang.AppConfig
 import com.v2ray.ang.R
+import com.v2ray.ang.dto.TrafficSnapshot
 import com.v2ray.ang.dto.ConnectionTestResult
 import com.v2ray.ang.dto.GroupMapItem
 import com.v2ray.ang.dto.LocateTarget
@@ -130,7 +131,31 @@ class MainViewModel(
         }
     }
 
+    private val _traffic = MutableStateFlow(TrafficUiState())
+    val traffic: StateFlow<TrafficUiState> = _traffic.asStateFlow()
+
+    private fun onTraffic(snapshot: TrafficSnapshot) {
+        if (!uiState.value.isRunning) return
+        _traffic.update { current ->
+            TrafficUiState(
+                upSpeed = snapshot.upSpeed,
+                downSpeed = snapshot.downSpeed,
+                upTotal = current.upTotal + snapshot.upDelta,
+                downTotal = current.downTotal + snapshot.downDelta,
+                upHistory = (current.upHistory + snapshot.upSpeed).takeLast(30),
+                downHistory = (current.downHistory + snapshot.downSpeed).takeLast(30)
+            )
+        }
+    }
+
     private fun handleServiceEvent(event: MainServiceEvent) {
+        if (event == MainServiceEvent.StateNotRunning ||
+            event == MainServiceEvent.StateStopSuccess ||
+            event == MainServiceEvent.StateStartSuccess ||
+            event is MainServiceEvent.StateStartFailure
+        ) {
+            _traffic.value = TrafficUiState()
+        }
         when (event) {
             MainServiceEvent.StateRunning -> updateRunningState(true, clearTestingText = false)
             MainServiceEvent.StateNotRunning -> updateRunningState(false, clearTestingText = false)
@@ -156,6 +181,7 @@ class MainViewModel(
                 }
             }
 
+            is MainServiceEvent.Traffic -> onTraffic(event.snapshot)
             MainServiceEvent.StateStopSuccess -> updateRunningState(false)
             is MainServiceEvent.MeasureDelayResult -> {
                 if (!uiState.value.isRunning || !testRequests.completeCurrent(event.requestId)) return

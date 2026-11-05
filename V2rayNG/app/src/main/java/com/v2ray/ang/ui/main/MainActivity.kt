@@ -25,6 +25,7 @@ import com.v2ray.ang.handler.MmkvManager
 import com.v2ray.ang.handler.SettingsChangeManager
 import com.v2ray.ang.handler.SettingsManager
 import com.v2ray.ang.ui.AboutActivity
+import com.v2ray.ang.ui.iran.IranToolsActivity
 import com.v2ray.ang.ui.backup.BackupActivity
 import com.v2ray.ang.ui.base.HelperBaseComponentActivity
 import com.v2ray.ang.ui.logcat.LogcatActivity
@@ -156,6 +157,7 @@ class MainActivity : HelperBaseComponentActivity() {
             MainDestination.Logcat -> Intent(this, LogcatActivity::class.java)
             MainDestination.BackupRestore -> Intent(this, BackupActivity::class.java)
             MainDestination.About -> Intent(this, AboutActivity::class.java)
+            MainDestination.IranTools -> Intent(this, IranToolsActivity::class.java)
         }
         settingsActivityLauncher.launch(intent)
     }

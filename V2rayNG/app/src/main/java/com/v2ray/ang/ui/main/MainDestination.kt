@@ -6,6 +6,7 @@ import com.v2ray.ang.R
 
 /** Screens that can be opened from the main page. */
 enum class MainDestination(@DrawableRes val iconRes: Int, @StringRes val labelRes: Int) {
+    IranTools(R.drawable.ic_shield_24dp, R.string.title_iran_tools),
     Subscriptions(R.drawable.ic_subscriptions_24dp, R.string.title_sub_setting),
     PerAppProxy(R.drawable.ic_per_apps_24dp, R.string.per_app_proxy_settings),
     Routing(R.drawable.ic_routing_24dp, R.string.routing_settings_title),

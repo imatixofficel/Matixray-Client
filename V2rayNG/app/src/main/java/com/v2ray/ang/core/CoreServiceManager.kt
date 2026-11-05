@@ -289,6 +289,9 @@ object CoreServiceManager {
         } else if (!isReload) {
             MessageHelper.sendMsg2UI(service, AppConfig.MSG_STATE_START_SUCCESS, "")
         }
+        if (!isReload) {
+            MmkvManager.encodeSettings(AppConfig.PREF_CONNECTED_SINCE, System.currentTimeMillis().toString())
+        }
         NotificationManager.startSpeedNotification()
         LogUtil.i(AppConfig.TAG, "StartCore-Manager: Core started successfully")
     }
@@ -384,6 +387,7 @@ object CoreServiceManager {
             browserDialer = null
         }
 
+        MmkvManager.encodeSettings(AppConfig.PREF_CONNECTED_SINCE, "")
         MessageHelper.sendMsg2UI(service, AppConfig.MSG_STATE_STOP_SUCCESS, "")
 
         try {

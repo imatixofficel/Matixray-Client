@@ -41,6 +41,7 @@ fun MainScreen(
 ) {
     val uiState by mainViewModel.uiState.collectAsStateWithLifecycle()
     val updateState by updateViewModel.state.collectAsStateWithLifecycle()
+    val traffic by mainViewModel.traffic.collectAsStateWithLifecycle()
     val groups = uiState.groups
     val isLoading by mainViewModel.isLoading.collectAsStateWithLifecycle()
     val isRunning = uiState.isRunning
@@ -172,6 +173,7 @@ fun MainScreen(
                 isRunning = isRunning,
                 displayText = displayText,
                 selectedGuid = selectedGuid,
+                traffic = traffic,
                 onNavigate = onNavigate,
                 modifier = Modifier.padding(innerPadding)
             )

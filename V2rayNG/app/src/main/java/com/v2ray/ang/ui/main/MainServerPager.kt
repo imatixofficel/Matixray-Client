@@ -350,7 +350,7 @@ private fun ServerListItemContent(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 5.dp)
+            .padding(horizontal = 10.dp, vertical = 3.dp)
             .height(IntrinsicSize.Min)
             .semantics {
                 if (selectedStateDescription != null) {
@@ -358,19 +358,19 @@ private fun ServerListItemContent(
                 }
             }
     ) {
-        // Protocol tab, a separate block next to the card
+        // Protocol tab, a separate narrow block next to the card
         Box(
             modifier = Modifier
-                .width(30.dp)
+                .width(24.dp)
                 .fillMaxHeight()
-                .clip(RoundedCornerShape(12.dp))
+                .clip(RoundedCornerShape(10.dp))
                 .background(if (isSelected) scheme.primary else scheme.surfaceVariant),
             contentAlignment = Alignment.Center
         ) {
             Text(
                 text = protocolLabel(row.profile),
                 color = if (isSelected) scheme.onPrimary else scheme.onSurface,
-                fontSize = 11.sp,
+                fontSize = 10.sp,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
                 softWrap = false,
@@ -379,68 +379,72 @@ private fun ServerListItemContent(
                     .graphicsLayer { rotationZ = -90f }
             )
         }
-        Spacer(modifier = Modifier.width(6.dp))
+        Spacer(modifier = Modifier.width(4.dp))
 
         Row(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxHeight()
-                .clip(RoundedCornerShape(14.dp))
+                .clip(RoundedCornerShape(12.dp))
                 .background(if (isSelected) scheme.primaryContainer else scheme.surface)
                 .clickable { actions.select(row.guid) }
         ) {
             Column(
                 Modifier
                     .weight(1f)
-                    .padding(start = 12.dp, end = 8.dp, top = 10.dp, bottom = 10.dp)
+                    .padding(start = 10.dp, end = 6.dp, top = 6.dp, bottom = 6.dp),
+                verticalArrangement = Arrangement.Center
             ) {
                 Text(
                     row.remarks,
-                    style = MaterialTheme.typography.bodyLarge.copy(lineBreak = LineBreak.Paragraph),
+                    style = MaterialTheme.typography.bodyMedium.copy(lineBreak = LineBreak.Paragraph),
+                    fontSize = 14.sp,
                     color = if (isSelected) scheme.onPrimaryContainer else scheme.onSurface,
-                    maxLines = 2,
+                    maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(2.dp))
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     if (row.subscriptionBadge.isNotBlank()) {
                         Box(
                             Modifier
-                                .size(20.dp)
+                                .size(16.dp)
                                 .clip(CircleShape)
                                 .background(scheme.primary.copy(alpha = 0.2f)), Alignment.Center
                         ) {
-                            Text(row.subscriptionBadge.uppercase(), fontSize = 10.sp, fontWeight = FontWeight.Bold, color = scheme.primary)
+                            Text(row.subscriptionBadge.uppercase(), fontSize = 8.sp, fontWeight = FontWeight.Bold, color = scheme.primary)
                         }
-                        Spacer(modifier = Modifier.width(6.dp))
+                        Spacer(modifier = Modifier.width(4.dp))
                     }
                     Text(
                         row.statistics,
                         Modifier.weight(1f),
                         style = MaterialTheme.typography.bodySmall,
+                        fontSize = 11.sp,
                         color = if (isSelected) scheme.onPrimaryContainer.copy(alpha = 0.75f) else scheme.onSurfaceVariant,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
                     if (testResult.isNotEmpty()) {
-                        Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.width(6.dp))
                         val pingColor = if (row.testDelayMillis < 0L) colorPingRed else colorPing
                         Text(
                             testResult,
                             modifier = Modifier
-                                .clip(RoundedCornerShape(6.dp))
+                                .clip(RoundedCornerShape(5.dp))
                                 .background(pingColor.copy(alpha = if (isDark) 0.28f else 0.18f))
-                                .padding(horizontal = 6.dp, vertical = 2.dp),
+                                .padding(horizontal = 5.dp, vertical = 1.dp),
+                            fontSize = 10.sp,
                             style = MaterialTheme.typography.labelSmall,
                             color = pingColor,
                             maxLines = 1
                         )
                     }
                 }
-                Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     row.typeDescription,
                     style = MaterialTheme.typography.labelSmall,
+                    fontSize = 10.sp,
                     color = colorConfigType,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -450,12 +454,12 @@ private fun ServerListItemContent(
             if (doubleColumnDisplay) {
                 IconButton(
                     onClick = { actions.more(row.guid, row.profile) },
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier.size(36.dp)
                 ) {
                     Icon(
                         painterResource(R.drawable.ic_more_vert_24dp),
                         stringResource(R.string.acc_more),
-                        Modifier.size(22.dp),
+                        Modifier.size(20.dp),
                         tint = scheme.onSurface
                     )
                 }
@@ -463,10 +467,10 @@ private fun ServerListItemContent(
                 Row(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .background(if (isDark) Color(0xFF3A3B44) else Color(0xFF2B2B30))
-                        .padding(horizontal = 6.dp),
+                        .background(if (isDark) Color(0xFF3A3450) else Color(0xFF2A2340))
+                        .padding(horizontal = 4.dp),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    horizontalArrangement = Arrangement.spacedBy(3.dp)
                 ) {
                     RowActionButton(R.drawable.ic_edit_24dp, stringResource(R.string.acc_edit)) {
                         actions.edit(row.guid, row.profile)
@@ -487,7 +491,7 @@ private fun ServerListItemContent(
 private fun RowActionButton(iconRes: Int, description: String, onClick: () -> Unit) {
     Box(
         modifier = Modifier
-            .size(30.dp)
+            .size(24.dp)
             .clip(CircleShape)
             .background(Color(0xFFF2F2F7))
             .clickable(onClick = onClick),
@@ -496,8 +500,8 @@ private fun RowActionButton(iconRes: Int, description: String, onClick: () -> Un
         Icon(
             painter = painterResource(iconRes),
             contentDescription = description,
-            tint = Color(0xFF2B2B30),
-            modifier = Modifier.size(16.dp)
+            tint = Color(0xFF2A2340),
+            modifier = Modifier.size(14.dp)
         )
     }
 }
